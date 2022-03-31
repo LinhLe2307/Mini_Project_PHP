@@ -42,7 +42,28 @@
         ?>
         <?= $degrees."°".$initialTemp." is ". round($result, 2)."°".$targetTemp?>
     </form>
-    
-    
+
+    <!--........ Speed converter .........-->
+    <form class="speed-converter" method="post" action="index.php">
+        <h2>Speed converter 🚀🏎 🛵</h2>
+        <div>
+            <label for="kilometers"><span>From: Kilometers per hour</span></label>
+            <input type="number" name="kilometers" id="kilometers" step="any"/>
+        </div>
+        <div>
+            <span>To</span>
+            <select name="units">
+                <option value="meters per seconds" required>Meters per second</option>
+                <option value="knots">Knots </option>
+            </select>
+        </div>
+        <input type="submit" value="Submit">
+        <?php 
+            require "convert-speed.php";
+            $kilometersInput = isset($_POST["kilometers"]) ? $_POST["kilometers"] : "";
+            $unitsOption = isset($_POST["units"]) ? $_POST["units"] : "";
+        ?>
+        <p><?= covertSpeed($kilometersInput, $unitsOption); ?></p>
+    </form>
 </body>
 </html>

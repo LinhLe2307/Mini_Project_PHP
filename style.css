@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap");
 body {
   background-color: slateblue;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 h1 {
@@ -14,13 +14,40 @@ h2 {
 
 span {
   font-weight: 100;
+  margin-right: 1rem;
 }
 
-.converter {
+input,
+select {
+  font-family: inherit;
+}
+
+input[type="number"],
+select {
+  height: 1.5rem;
+  border-radius: 5px;
+  padding: 0 0.5rem;
+}
+
+input[type="number"] {
+  width: 8rem;
+  text-align: right;
+}
+
+select {
+  width: 10rem;
+}
+
+.converter,
+.speed-converter {
   background-color: white;
   padding: 1rem;
   border-radius: 10px;
   box-shadow: 0px 0px 3px black;
   max-width: 500px;
-  margin: 0 auto;
+  margin: 0 auto 1rem;
+}
+
+.speed-converter > div {
+  margin: 1rem 0;
 }
