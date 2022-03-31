@@ -47,23 +47,33 @@
     <form class="speed-converter" method="post" action="index.php">
         <h2>Speed converter 🚀🏎 🛵</h2>
         <div>
-            <label for="kilometers"><span>From: Kilometers per hour</span></label>
-            <input type="number" name="kilometers" id="kilometers" step="any"/>
-        </div>
-        <div>
-            <span>To</span>
-            <select name="units">
-                <option value="meters per seconds" required>Meters per second</option>
+            <span>From:</span>
+            <select name="base-units">
+                <option value="kilometers per hour" required>Kilometers per hour</option>
+                <option value="meters per second">Meters per second</option>
                 <option value="knots">Knots </option>
             </select>
+        </div>
+        <div>
+            <span>To:</span>
+            <select name="target-units">
+                <option value="kilometers per hour" required>Kilometers per hour</option>
+                <option value="meters per second">Meters per second</option>
+                <option value="knots">Knots </option>
+            </select>
+        </div>
+        <div>
+            <label for="base-number"><h3>Enter speed: </h3></label>
+            <input type="number" name="base-number" id="base-number" step="any"/>
         </div>
         <input type="submit" value="Submit">
         <?php 
             require "convert-speed.php";
-            $kilometersInput = isset($_POST["kilometers"]) ? $_POST["kilometers"] : "";
-            $unitsOption = isset($_POST["units"]) ? $_POST["units"] : "";
+            $usersInput = isset($_POST["base-number"]) ? $_POST["base-number"] : "";
+            $baseOptions = isset($_POST["base-units"]) ? $_POST["base-units"] : "";
+            $targetOptions = isset($_POST["target-units"]) ? $_POST["target-units"] : "";
         ?>
-        <p><?= covertSpeed($kilometersInput, $unitsOption); ?></p>
+        <p><?= convertSpeed($usersInput, $baseOptions, $targetOptions); ?></p>
     </form>
 </body>
 </html>
