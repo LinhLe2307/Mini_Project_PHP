@@ -43,8 +43,8 @@
         <?= $degrees."°".$initialTemp." is ". round($result, 2)."°".$targetTemp?>
     </form>
 
-    <!--........ Speed converter .........-->
-    <form class="speed-converter" method="post" action="index.php">
+       <!--........ Speed converter .........-->
+       <form class="speed-converter" method="post" action="index.php">
         <h2>Speed converter 🚀🏎 🛵</h2>
         <div>
             <span>From:</span>
@@ -75,5 +75,35 @@
         ?>
         <p><?= convertSpeed($usersInput, $baseOptions, $targetOptions); ?></p>
     </form>
+  <!--...... Mass converter.......-->
+    <form class="converter" method="post">
+        <h2>Mass converter 🏋️‍♀️⚖️🏋️</h2>
+        <span>From:</span>
+        <select name="initialMass">
+            <option value="kg">Kilogram</option>
+            <option value="g">Gram</option>
+        </select>
+        <span>To:</span>
+        <select name="targetMass">
+            <option value="g">Gram</option>
+            <option value="kg">Kilogram</option>
+        </select>
+        <h3><label for="weight">Enter weight:</label></h3>
+        <input type="number" name="weight">
+        <p><input type="submit" value="Submit"></p>
+
+        <!--...... Mass converter formula .......-->
+        <?php
+            include 'convert-mass.php';
+
+            $initialMass = isset($_POST["initialMass"]) ? $_POST["initialMass"] : "";
+            $targetMass = isset($_POST["targetMass"]) ? $_POST["targetMass"] : "";
+            $weight = isset($_POST["weight"]) ? $_POST["weight"]: 0;
+
+            $outcome = convertMass($initialMass, $targetMass, $weight);
+        ?>
+        <?= "The convert result of ".$weight.$initialMass." is ". $outcome.$targetMass?>
+    </form>
+
 </body>
 </html>
